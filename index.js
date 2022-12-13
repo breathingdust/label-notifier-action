@@ -29,6 +29,10 @@ async function main() {
 
   core.info(`Starting job for ${owner} ${repo}. Issue:${issueNumber} Label: ${label}`);
 
+  for (let index = 0; index < labelRecipients.length; index += 1) {
+    core.info(`${labelRecipients[index]}`);
+  }
+
   const comments = [];
   for (let i = 0; i < labelRecipients.length; i += 1) {
     const recipientConfig = labelRecipients[i].trim().split('=');
