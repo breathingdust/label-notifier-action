@@ -1,0 +1,17 @@
+name: OnLabel
+on:
+  issues:
+      types: [labeled]
+jobs:
+  label-notfier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify
+        uses: breathingdust/label-notifier-action@latest
+        with:
+          message: "{recipient}! The label {label} has been applied to this issue."
+          label-recipients: |
+            bug=@breathingdust
+            documentation=marcosentino
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
