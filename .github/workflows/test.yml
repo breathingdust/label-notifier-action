@@ -9,7 +9,7 @@ jobs:
       - name: Notify
         uses: breathingdust/label-notifier-action@main
         with:
-          message: ":wave Hi {recipient}!. Just letting you know the label `{label}` has been applied to this issue."
+          message: "👋 Hi {recipient}!. Just letting you know the label `{label}` has been applied to this issue."
           label-recipients: |
             bug=@breathingdust
             documentation=@marcosentino
