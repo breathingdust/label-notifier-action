@@ -24,7 +24,7 @@ async function addComment(issueNumber, message, label, recipient) {
 async function main() {
   const issueNumber = github.context.payload.issue.number;
   const message = core.getInput('message');
-  const labelRecipients = core.getInput('label_recipients').trim().split('\n');
+  const labelRecipients = core.getInput('label-recipients').trim().split('\n');
   const label = github.context.payload.label.name;
 
   core.info(`Starting job for ${owner} ${repo}. Issue:${issueNumber} Label: ${label}`);
