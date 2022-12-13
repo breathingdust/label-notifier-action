@@ -1,0 +1,12 @@
+name: 'Label Notifier Action'
+description: 'Will comment to notify a GitHub user when a specified label is applied to an issue or pr.'
+inputs:
+  message:
+    description: "Message to use as body of the comment."
+    required: true
+  label-recipients:
+    description: "Map of label to recipient"
+    required: true
+runs:
+  using: 'node16'
+  main: 'index.js'
