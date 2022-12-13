@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Notify
-        uses: breathingdust/label-notifier-action@latest
+        uses: breathingdust/label-notifier-action@main
         with:
           message: "{recipient}! The label {label} has been applied to this issue."
           label-recipients: |
