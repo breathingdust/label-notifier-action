@@ -12,6 +12,6 @@ jobs:
           message: "{recipient}! The label {label} has been applied to this issue."
           label-recipients: |
             bug=@breathingdust
-            documentation=marcosentino
+            documentation=@marcosentino
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
