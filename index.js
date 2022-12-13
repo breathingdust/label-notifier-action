@@ -23,25 +23,22 @@ async function addComment(issueNumber, message, label, recipient) {
 
 async function main() {
   core.info(`Starting job for ${owner} ${repo}.`);
-  // const issueNumber = github.context.payload.issue.number;
-  // const message = core.getInput('message');
-  // const labelRecipients = core.getInput('label_recipients').split('\n');
-  // const label = github.context.payload.label.name;
-
   const issueNumber = github.context.payload.issue.number;
   const message = core.getInput('message');
-  const labelRecipients = core.getInput('label_recipients').split('\n');
+  const labelRecipients = core.getInput('label_recipients').trim().split('\n');
   const label = github.context.payload.label.name;
 
+  const comments = [];
   for (let i = 0; i < labelRecipients.length; i += 1) {
-    const recipientConfig = labelRecipients.split('=');
-    if (recipientConfig[0] === label) {
+    const recipientConfig = labelRecipients[i].trim().split('=');
+    if (recipientConfig[0].trim() === label.trim()) {
       core.info(`Found label:${label} with recipient:${recipientConfig[1]} configured for issue ${issueNumber}`);
-      addComment(issueNumber, message, recipientConfig[1]);
+      comments.push(addComment(issueNumber, message, label, recipientConfig[1].trim()));
     } else {
-      core.info(`No recipient found for label:${label} on issue ${issueNumber}`);
+      core.info(`No recipient found for label:${recipientConfig[0]} on issue ${issueNumber}`);
     }
   }
+  await Promise.all(comments);
 }
 
 try {
