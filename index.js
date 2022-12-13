@@ -22,11 +22,12 @@ async function addComment(issueNumber, message, label, recipient) {
 }
 
 async function main() {
-  core.info(`Starting job for ${owner} ${repo}.`);
   const issueNumber = github.context.payload.issue.number;
   const message = core.getInput('message');
   const labelRecipients = core.getInput('label_recipients').trim().split('\n');
   const label = github.context.payload.label.name;
+
+  core.info(`Starting job for ${owner} ${repo}. Issue:${issueNumber} Label: ${label}`);
 
   const comments = [];
   for (let i = 0; i < labelRecipients.length; i += 1) {
