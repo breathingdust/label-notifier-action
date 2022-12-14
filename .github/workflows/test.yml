@@ -11,7 +11,7 @@ jobs:
         with:
           message: "👋 Hi {recipient}! Just letting you know the label `{label}` has been applied to this issue."
           label-recipients: |
-            bug=@breathingdust
+            label/s3=@breathingdust
             documentation=@marcosentino
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
